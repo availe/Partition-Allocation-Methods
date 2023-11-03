@@ -24,14 +24,21 @@
 
 void inputValuesFixed(SuperStruct &sp) {
     Partition p0, p1, p2, p3;
-    sp.partitionList[0] = p0;
-    sp.partitionList[1] = p1;
-    sp.partitionList[2] = p2;
-    sp.partitionList[3] = p3;
+    std::vector<Partition> partitionList;
+    partitionList.emplace_back(p0);
+    partitionList.emplace_back(p1);
+    partitionList.emplace_back(p2);
+    partitionList.emplace_back(p3);
 
     Job j0, j1, j2, j3;
-    sp.jobList[0] = j0;
-    sp.jobList[1] = j1;
-    sp.jobList[2] = j2;
-    sp.jobList[3] = j3;
+    std::vector<Job> jobList;
+    jobList.emplace_back(j0);
+    jobList.emplace_back(j1);
+    jobList.emplace_back(j2);
+    jobList.emplace_back(j3);
+
+    for (int i = 0; i < partitionList.size(); i++) {
+        sp.partitionList[i].partitionId = i;
+        sp.jobList[i].jobId = i;
+    }
 }
