@@ -9,8 +9,8 @@ int main() {
     SuperStruct sp;
     //inputValues(sp);
     inputValuesFixed(sp);
-    execute(sp);
-
+    executeFirstFit(sp);
+    results(sp);
 
     return 0;
 }

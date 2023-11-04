@@ -6,42 +6,29 @@
 #include <vector>
 
 struct Partition {
-    int partitionId;
-    int jobId;
+    int id;
+    int assignedJob;
     bool status;
     int size;
-    int remainingSize;
-    Partition() {
-        partitionId = 0;
-        jobId = 0;
-        status = false;
-        size = 0;
-        remainingSize = 0;
-    }
+    int memoryWaste;
+    Partition(); // defined in cpp file
+    void updateMemoryWaste(int jobSize);
 };
 
 struct Job {
-    int jobId;
+    int id;
     bool status;
     int assignedPart;
     int size;
-
-    Job() {
-        jobId = 0;
-        status = false;
-        assignedPart = -1;
-        size = 0;
-    }
+    Job(); // defined in cpp file
 };
 
 struct SuperStruct {
     std::unordered_map<int, Partition> partitionList;
     std::unordered_map<int, Job> jobList;
-
-    SuperStruct(): partitionList(), jobList() {}
 };
 
-//void inputValues(superStruct sp);
+void inputValues(SuperStruct &sp);
 
 void inputValuesFixed(SuperStruct &sp);
 

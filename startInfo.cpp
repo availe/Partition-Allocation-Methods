@@ -1,44 +1,70 @@
 #include "startInfo.h"
 
-/*void inputValues(superStruct sp) {
-    int numOfPartitions, sizeOfPartitions, numofProcesses;
-    std::cout << "Insert numOfMemoryPartitions: ";
+void inputValues(SuperStruct& sp) {
+    int numOfPartitions = 0, numOfJobs = 0;
+    std::cout << "Insert num of partitions: ";
     std::cin >> numOfPartitions;
 
     for (int i = 0; i < numOfPartitions; i++) {
-
+        Partition p;
+        std::cout << "\nInsert size for partition  " << i << ": ";
+        std::cin >> p.size;
+        p.id = i;
+        sp.partitionList[p.id] = p;
     }
 
+    std::cout << "\nInsert num of jobs: ";
+    std::cin >> numOfJobs;
 
-    std::cout << "\nInsert sizeOfMemoryPartitions: ";
-    std::cin >> sizeOfPartitions;
-    std::cout << "\nInsert numofProcesses";
-    std::cin >> numofProcesses;
-
-    int processId;
-    for (int i = 0; i < numofProcesses; i++) {
-        processId = i;
-        std::cout << "Which partition does job belong to?";
+    for (int i = 0; i < numOfJobs; i++) {
+        Job j;
+        std::cout << "\nInsert size for job " << i << ": ";
+        std::cin >> j.size;
+        j.id = i;
+        sp.jobList[j.id] = j;
     }
-}*/
+}
 
 void inputValuesFixed(SuperStruct &sp) {
-    Partition p0, p1, p2, p3;
-    std::vector<Partition> partitionList;
-    partitionList.emplace_back(p0);
-    partitionList.emplace_back(p1);
-    partitionList.emplace_back(p2);
-    partitionList.emplace_back(p3);
+    std::vector<int> partitionSizeList = {100, 300, 200, 450};
+    std::vector<int> jobSizeList = {100, 300, 200, 450};
 
-    Job j0, j1, j2, j3;
-    std::vector<Job> jobList;
-    jobList.emplace_back(j0);
-    jobList.emplace_back(j1);
-    jobList.emplace_back(j2);
-    jobList.emplace_back(j3);
-
-    for (int i = 0; i < partitionList.size(); i++) {
-        sp.partitionList[i].partitionId = i;
-        sp.jobList[i].jobId = i;
+    if (partitionSizeList.size() != jobSizeList.size()) {
+        std::cout << "# of jobs and partitions must be equivalent (for now)";
+        std::exit(1);
     }
+
+    for (int i = 0; i < jobSizeList.size(); i++) {
+        Partition p;
+        p.id = i;
+        p.size = partitionSizeList[i];
+        sp.partitionList[p.id] = p;
+
+        Job j;
+        j.id = i;
+        j.size = jobSizeList[i];
+        sp.jobList[j.id] = j;
+    }
+}
+
+void Partition::updateMemoryWaste(int jobSize) {
+    if(!status) {
+        return; // no need to check if partition has no job
+    }
+    memoryWaste = size - jobSize;
+}
+
+Partition::Partition() {
+    id = -1;
+    assignedJob = -1;
+    status = false;
+    size = -1;
+    memoryWaste = -1;
+}
+
+Job::Job() {
+    id = -1;
+    status = false;
+    assignedPart = -1;
+    size = -1;
 }
