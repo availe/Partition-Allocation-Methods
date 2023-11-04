@@ -4,6 +4,7 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
+#include <iomanip>
 
 struct Partition {
     int id;
@@ -26,10 +27,11 @@ struct Job {
 struct SuperStruct {
     std::unordered_map<int, Partition> partitionList;
     std::unordered_map<int, Job> jobList;
+    void results();
 };
 
-void inputValues(SuperStruct &sp);
+void inputValues(SuperStruct& sp);
 
-void inputValuesFixed(SuperStruct &sp);
+void inputValuesFixed(SuperStruct& sp);
 
 #endif //PARTITION_ALLOCATION_LAB_STARTINFO_H

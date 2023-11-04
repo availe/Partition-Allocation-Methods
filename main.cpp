@@ -10,7 +10,6 @@ int main() {
     //inputValues(sp);
     inputValuesFixed(sp);
     executeFirstFit(sp);
-    results(sp);
 
     return 0;
 }

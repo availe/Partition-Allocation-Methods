@@ -47,6 +47,33 @@ void inputValuesFixed(SuperStruct &sp) {
     }
 }
 
+void SuperStruct::results() {
+    int width = 20;
+    std::cout <<
+              std::setw(width) << std::left << "\nJob ID" <<
+              std::setw(width) << std::left << "Partition ID" <<
+              std::setw(width) << std::left << "Partition Size" <<
+              std::setw(width) << std::left << "Job Size" <<
+              std::setw(width) << std::left << "Partition Waste" <<
+              std::setw(width) << std::left << "Job Status" << "\n";
+
+    for (auto [jobId, job]: jobList) {
+        if (job.assignedPart == -1) {
+            std::cout << "Warning: Job " << jobId << " could not be allocated\n";
+            continue;
+        }
+
+        std::cout <<
+                  std::setw(width) << std::left << jobId <<
+                  std::setw(width) << std::left << job.assignedPart <<
+                  std::setw(width) << std::left << partitionList.at(job.assignedPart).size <<
+                  std::setw(width) << std::left << job.size <<
+                  std::setw(width) << std::left << partitionList.at(job.assignedPart).memoryWaste <<
+                  std::setw(width) << std::left << job.status << "\n";
+    }
+}
+
+
 void Partition::updateMemoryWaste(int jobSize) {
     if(!status) {
         return; // no need to check if partition has no job
