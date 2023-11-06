@@ -7,7 +7,7 @@ void inputValues(SuperStruct& sp) {
 
     for (int i = 0; i < numOfPartitions; i++) {
         Partition p;
-        std::cout << "\nInsert size for partition  " << i << ": ";
+        std::cout << "\nInsert size for partition  " << i + 1 << ": ";
         std::cin >> p.size;
         p.id = i;
         sp.partitionMap[p.id] = p;
@@ -18,7 +18,7 @@ void inputValues(SuperStruct& sp) {
 
     for (int i = 0; i < numOfJobs; i++) {
         Job j;
-        std::cout << "\nInsert size for job " << i << ": ";
+        std::cout << "\nInsert size for job " << i + 1 << ": ";
         std::cin >> j.size;
         j.id = i;
         sp.jobMap[j.id] = j;

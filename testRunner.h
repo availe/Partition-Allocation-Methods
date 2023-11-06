@@ -2,6 +2,7 @@
 #define PARTITION_ALLOCATION_LAB_TESTRUNNER_H
 #include "startInfo.h"
 
-void executeTests(SuperStruct& sp);
+void executeStaticTest(SuperStruct& sp);
+void executeDynamicTest(SuperStruct& sp);
 
 #endif //PARTITION_ALLOCATION_LAB_TESTRUNNER_H

@@ -9,10 +9,10 @@ int main() {
     std::cin >> input;
     switch (input) {
         case 1:
-            executeTests(sp);
+            executeStaticTest(sp);
             break;
         case 2:
-            inputValues(sp);
+            executeDynamicTest(sp);
             break;
         default:
             std::cout << "Invalid selection";

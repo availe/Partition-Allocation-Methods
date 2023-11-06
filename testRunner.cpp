@@ -4,7 +4,7 @@
 #include "worstFit.h"
 #include "bestFit.h"
 
-void executeTests(SuperStruct& sp) {
+void executeStaticTest(SuperStruct& sp) {
     inputValuesFixed(sp);
     executeFirstFit(sp);
     inputValuesFixed(sp);
@@ -12,5 +12,18 @@ void executeTests(SuperStruct& sp) {
     inputValuesFixed(sp);
     executeWorstFit(sp);
     inputValuesFixed(sp);
+    executeBestFit(sp);
+}
+
+void executeDynamicTest(SuperStruct& sp) {
+    inputValues(sp);
+    SuperStruct storeSp = sp;
+
+    executeFirstFit(sp);
+    sp = storeSp;
+    executeNextFit(sp);
+    sp = storeSp;
+    executeWorstFit(sp);
+    sp = storeSp;
     executeBestFit(sp);
 }
