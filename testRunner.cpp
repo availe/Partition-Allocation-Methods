@@ -11,4 +11,6 @@ void executeTests(SuperStruct& sp) {
     executeNextFit(sp);
     inputValuesFixed(sp);
     executeWorstFit(sp);
+    inputValuesFixed(sp);
+    executeBestFit(sp);
 }

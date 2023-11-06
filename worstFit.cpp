@@ -7,7 +7,7 @@ void executeWorstFit(SuperStruct &sp) {
 }
 
 // used to sort partition vector from largest to smallest
-bool cmpPartSize (std::pair<int, Partition>& a, std::pair<int, Partition>& b) {
+bool static cmpPartSize (std::pair<int, Partition>& a, std::pair<int, Partition>& b) {
     return a.second.size >= b.second.size;
 }
 
