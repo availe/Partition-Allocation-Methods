@@ -10,6 +10,8 @@ int main() {
     //inputValues(sp);
     inputValuesFixed(sp);
     executeFirstFit(sp);
+    inputValuesFixed(sp);
+    executeNextFit(sp);
 
     return 0;
 }

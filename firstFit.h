@@ -3,6 +3,6 @@
 #include "startInfo.h"
 
 void executeFirstFit(SuperStruct &sp);
-void autoLoop(SuperStruct &sp);
+void static autoLoop(SuperStruct &sp);
 
 #endif //PARTITION_ALLOCATION_LAB_FIRSTFIT_H

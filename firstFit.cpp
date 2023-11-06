@@ -2,10 +2,11 @@
 
 void executeFirstFit(SuperStruct &sp) {
     autoLoop(sp);
+    std::cout << "---\nResults for first fit:";
     sp.results();
 }
 
-void autoLoop(SuperStruct &sp) {
+void static autoLoop(SuperStruct &sp) {
     for (auto &[jobId, job]: sp.jobList) {
         if (job.status) continue;
         for (auto &[partId, part]: sp.partitionList) {

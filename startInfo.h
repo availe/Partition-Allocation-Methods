@@ -2,7 +2,7 @@
 #define PARTITION_ALLOCATION_LAB_STARTINFO_H
 #include <iostream>
 #include <string>
-#include <unordered_map>
+#include <map>
 #include <vector>
 #include <iomanip>
 
@@ -25,8 +25,8 @@ struct Job {
 };
 
 struct SuperStruct {
-    std::unordered_map<int, Partition> partitionList;
-    std::unordered_map<int, Job> jobList;
+    std::map<int, Partition> partitionList;
+    std::map<int, Job> jobList;
     void results();
 };
 

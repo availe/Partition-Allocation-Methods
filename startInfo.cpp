@@ -27,12 +27,7 @@ void inputValues(SuperStruct& sp) {
 
 void inputValuesFixed(SuperStruct &sp) {
     std::vector<int> partitionSizeList = {100, 300, 200, 450};
-    std::vector<int> jobSizeList = {100, 300, 200, 450};
-
-    if (partitionSizeList.size() != jobSizeList.size()) {
-        std::cout << "# of jobs and partitions must be equivalent (for now)";
-        std::exit(1);
-    }
+    std::vector<int> jobSizeList = {200, 100, 300, 300, 200};
 
     for (int i = 0; i < jobSizeList.size(); i++) {
         Partition p;
@@ -59,13 +54,14 @@ void SuperStruct::results() {
 
     for (auto [jobId, job]: jobList) {
         if (job.assignedPart == -1) {
-            std::cout << "Warning: Job " << jobId << " could not be allocated\n";
+            std::cout << "Warning: Job " << jobId + 1 << " could not be allocated -- Job Status: " << job.status << "\n";
             continue;
         }
 
+        // we increased jobId and assignedPart by +1 to start at 1 and not 0
         std::cout <<
-                  std::setw(width) << std::left << jobId <<
-                  std::setw(width) << std::left << job.assignedPart <<
+                  std::setw(width) << std::left << jobId + 1 <<
+                  std::setw(width) << std::left << job.assignedPart + 1 <<
                   std::setw(width) << std::left << partitionList.at(job.assignedPart).size <<
                   std::setw(width) << std::left << job.size <<
                   std::setw(width) << std::left << partitionList.at(job.assignedPart).memoryWaste <<
