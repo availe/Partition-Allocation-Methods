@@ -10,7 +10,7 @@ void inputValues(SuperStruct& sp) {
         std::cout << "\nInsert size for partition  " << i << ": ";
         std::cin >> p.size;
         p.id = i;
-        sp.partitionList[p.id] = p;
+        sp.partitionMap[p.id] = p;
     }
 
     std::cout << "\nInsert num of jobs: ";
@@ -21,7 +21,7 @@ void inputValues(SuperStruct& sp) {
         std::cout << "\nInsert size for job " << i << ": ";
         std::cin >> j.size;
         j.id = i;
-        sp.jobList[j.id] = j;
+        sp.jobMap[j.id] = j;
     }
 }
 
@@ -33,12 +33,12 @@ void inputValuesFixed(SuperStruct &sp) {
         Partition p;
         p.id = i;
         p.size = partitionSizeList[i];
-        sp.partitionList[p.id] = p;
+        sp.partitionMap[p.id] = p;
 
         Job j;
         j.id = i;
         j.size = jobSizeList[i];
-        sp.jobList[j.id] = j;
+        sp.jobMap[j.id] = j;
     }
 }
 
@@ -52,7 +52,7 @@ void SuperStruct::results() {
               std::setw(width) << std::left << "Partition Waste" <<
               std::setw(width) << std::left << "Job Status" << "\n";
 
-    for (auto [jobId, job]: jobList) {
+    for (auto [jobId, job]: jobMap) {
         if (job.assignedPart == -1) {
             std::cout << "Warning: Job " << jobId + 1 << " could not be allocated -- Job Status: " << job.status << "\n";
             continue;
@@ -62,9 +62,9 @@ void SuperStruct::results() {
         std::cout <<
                   std::setw(width) << std::left << jobId + 1 <<
                   std::setw(width) << std::left << job.assignedPart + 1 <<
-                  std::setw(width) << std::left << partitionList.at(job.assignedPart).size <<
+                  std::setw(width) << std::left << partitionMap.at(job.assignedPart).size <<
                   std::setw(width) << std::left << job.size <<
-                  std::setw(width) << std::left << partitionList.at(job.assignedPart).memoryWaste <<
+                  std::setw(width) << std::left << partitionMap.at(job.assignedPart).memoryWaste <<
                   std::setw(width) << std::left << job.status << "\n";
     }
 }

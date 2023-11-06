@@ -1,0 +1,7 @@
+#ifndef PARTITION_ALLOCATION_LAB_TESTRUNNER_H
+#define PARTITION_ALLOCATION_LAB_TESTRUNNER_H
+#include "startInfo.h"
+
+void executeTests(SuperStruct& sp);
+
+#endif //PARTITION_ALLOCATION_LAB_TESTRUNNER_H

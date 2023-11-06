@@ -7,9 +7,9 @@ void executeFirstFit(SuperStruct &sp) {
 }
 
 void static autoLoop(SuperStruct &sp) {
-    for (auto &[jobId, job]: sp.jobList) {
+    for (auto &[jobId, job]: sp.jobMap) {
         if (job.status) continue;
-        for (auto &[partId, part]: sp.partitionList) {
+        for (auto &[partId, part]: sp.partitionMap) {
             if (part.status || job.size > part.size) continue;
              part.assignedJob = jobId;
              part.status = true;

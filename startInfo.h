@@ -25,8 +25,8 @@ struct Job {
 };
 
 struct SuperStruct {
-    std::map<int, Partition> partitionList;
-    std::map<int, Job> jobList;
+    std::map<int, Partition> partitionMap;
+    std::map<int, Job> jobMap;
     void results();
 };
 

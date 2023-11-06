@@ -4,14 +4,11 @@
 #include "nextFit.h"
 #include "worstFit.h"
 #include "bestFit.h"
+#include "testRunner.h"
 
 int main() {
     SuperStruct sp;
-    //inputValues(sp);
-    inputValuesFixed(sp);
-    executeFirstFit(sp);
-    inputValuesFixed(sp);
-    executeNextFit(sp);
+    executeTests(sp);
 
     return 0;
 }
