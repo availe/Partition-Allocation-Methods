@@ -1,9 +1,5 @@
 #include <iostream>
 #include "startInfo.h"
-#include "firstFit.h"
-#include "nextFit.h"
-#include "worstFit.h"
-#include "bestFit.h"
 #include "testRunner.h"
 
 int main() {
@@ -22,6 +18,6 @@ int main() {
             std::cout << "Invalid selection";
             break;
     }
-    
+
     return 0;
 }
