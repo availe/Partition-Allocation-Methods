@@ -1,9 +1,9 @@
 #include <iostream>
 #include "startInfo.h"
 #include "firstFit.h"
-//#include "nextFit.h"
-//#include "worstFit.h"
-//#include "bestFit.h"
+#include "nextFit.h"
+#include "worstFit.h"
+#include "bestFit.h"
 
 int main() {
     SuperStruct sp;
